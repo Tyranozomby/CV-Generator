@@ -26,20 +26,20 @@ for ($i = 0; $i < sizeof($projects); $i++) {
 }
 
 echo "<br>";
-for ($i = 0; $i < sizeof($education); $i++) {
-    $temp_array = $education[$i];
+for ($i = 0; $i < sizeof($educations); $i++) {
+    $temp_array = $educations[$i];
     echo "<p>$temp_array[0]: $temp_array[1]</p>";
 }
 
 echo "<br>";
-for ($i = 0; $i < sizeof($language); $i++) {
-    $temp_array = $language[$i];
+for ($i = 0; $i < sizeof($languages); $i++) {
+    $temp_array = $languages[$i];
     echo "<p>$temp_array[0]: $temp_array[1]</p>";
 }
 
 echo "<br>";
-for ($i = 0; $i < sizeof($contact); $i++) {
-    $temp_array = $contact[$i];
+for ($i = 0; $i < sizeof($contacts); $i++) {
+    $temp_array = $contacts[$i];
     echo "<p>$temp_array[0]: $temp_array[1]</p>";
 }
 

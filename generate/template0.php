@@ -20,13 +20,13 @@
 
     <div class="resume-content">
         <div class="left-column container">
-            <div class="title" <?php if ($contact == []) echo "hidden"; ?>>
+            <div class="title" <?php if ($contacts == []) echo "hidden"; ?>>
                 <h3>Contact</h3>
                 <div class="keyline"></div>
             </div>
 
             <?php
-            foreach ($contact as $temp_array) {
+            foreach ($contacts as $temp_array) {
                 echo '<div class="info-tag-container">';
                 if ($temp_array[0] == "mail") {
                     echo '<i class="fa fa-envelope-o"></i>';
@@ -79,14 +79,14 @@
                     ?>
             </div>
 
-            <div class="container languages-container" <?php if ($language == []) echo "hidden"; ?>>
+            <div class="container languages-container" <?php if ($languages == []) echo "hidden"; ?>>
                 <div class="title">
                     <h3>Languages</h3>
                     <div class="keyline"></div>
                 </div>
                 <ul class="minimal">
                     <?php
-                    foreach ($language as $temp_array) {
+                    foreach ($languages as $temp_array) {
                         echo '<li>';
                         if ($temp_array[1] != "") {
                             echo "<h6>$temp_array[0] <em>($temp_array[1])</em></h6>";
@@ -152,14 +152,14 @@
                 ?>
             </div>
 
-            <div class="container education-container" <?php if ($education == []) echo "hidden"; ?>>
+            <div class="container education-container" <?php if ($educations == []) echo "hidden"; ?>>
                 <div class="title">
                     <h3>Education/Diploma</h3>
                     <div class="keyline"></div>
                 </div>
 
                 <?php
-                foreach ($education as $temp_array) {
+                foreach ($educations as $temp_array) {
                     echo '<section class="item">';
                     echo '<div class="section-header clearfix">';
                     echo '<h3 class="bold pull-left">';
