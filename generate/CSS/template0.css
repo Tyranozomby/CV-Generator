@@ -92,19 +92,20 @@ h1 {
 h2 {
     font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 20px;
     letter-spacing: .5px;
 }
 
 h3 {
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: .4px;
 }
 
 h3.bold {
     font-weight: 700;
+    font-size: 14px;
 }
 
 h4 {
@@ -115,12 +116,13 @@ h4 {
 
 h4.bold {
     font-weight: 700;
+    font-size: 13px;
 }
 
 h5 {
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 h5.italic {
@@ -130,7 +132,7 @@ h5.italic {
 h6 {
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 a {
@@ -142,22 +144,8 @@ a:hover {
     color: #2895F1;
 }
 
-a .fa-external-link {
-    font-size: 10px;
-    vertical-align: text-top;
-}
-
-p,
-li {
+p, li {
     font-size: 11px;
-}
-
-blockquote {
-    font-size: 11px;
-    font-family: "Lato", Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    font-style: italic;
-    margin: 10px 25px;
 }
 
 em {
@@ -183,16 +171,6 @@ ul.minimal li {
     padding-left: 0;
 }
 
-ul.two-column {
-    -webkit-column-count: 2;
-    -webkit-column-gap: 28px;
-    column-count: 2;
-    column-gap: 28px;
-}
-
-ul.two-column li {
-    padding-left: 0;
-}
 
 @page {
     size: A4;
@@ -224,7 +202,7 @@ ul.two-column li {
 
 .profile-pic {
     margin-top: -5px;
-    margin-right: 18px;
+    margin-right: 50px;
 }
 
 .profile-pic img {
@@ -237,20 +215,10 @@ ul.two-column li {
     margin: 5px 0 5px;
 }
 
-.sublink {
-    font-size: 70%;
-    font-weight: 200;
-    color: dimgray;
-}
-
-.capitalize {
-    text-transform: capitalize;
-}
-
 /* Layouts */
 .page {
     background: white;
-    width: 612px;
+    width: 650px;
     min-height: 792px;
     display: block;
     margin: 0 auto;
@@ -259,15 +227,9 @@ ul.two-column li {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
-.page:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 .left-column {
     float: left;
-    width: 160px;
+    width: 30%;
     margin-right: 20px;
     word-wrap: break-word;
 }
@@ -294,7 +256,7 @@ ul.two-column li {
         width: 100%;
         height: 100%;
         margin: 0;
-        padding: 36px 0 30px;
+        padding: 30px 0;
         box-shadow: none;
     }
 
@@ -318,21 +280,18 @@ ul.two-column li {
     vertical-align: middle;
 }
 
-.info-tag-container .fa.fa-map-marker {
+.fa.fa-map-marker {
     font-size: 16px;
 }
 
-.info-tag-container .fa.fa-mobile {
+.fa.fa-mobile {
     font-size: 18px;
 }
 
-.info-tag-container .fa.fa-envelope-o {
+.fa.fa-envelope-o {
     font-size: 12px;
 }
 
-.info-tag-container .fa.fa-desktop {
-    font-size: 11px;
-}
 
 .info-tag-container .fa.fa-external-link {
     width: auto;
@@ -346,35 +305,4 @@ ul.two-column li {
     display: inline-block;
     vertical-align: middle;
     width: 139px;
-}
-
-.references-container .fa {
-    font-size: 14px;
-}
-
-.education-container .location {
-    padding-bottom: 6px;
-    font-weight: 400;
-}
-
-.education-container .specialization {
-    text-transform: none;
-    font-style: italic;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.main-skill {
-    font-size: 80%;
-}
-
-.skill {
-    margin: .15em;
-    padding: .15em;
-    background: ghostwhite;
-    border-radius: 5px;
 }

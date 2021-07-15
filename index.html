@@ -11,47 +11,76 @@
 </head>
 
 <body>
-<form action="generate/" method="POST" target="_blank">
-    <header>
-        <div class="logo">
-            <img src="logo.jpg" alt="logo">
-        </div>
-        <h1><span>T</span>yrano's <span>L</span>ab</h1>
-    </header>
+<form action="generate/" method="POST" target="_blank" enctype="multipart/form-data">
     <div class="container">
         <div class="col-left"> <!-- RIGHT COLUMN -->
-
+            <h2>Templates</h2>
             <label class="preview">
                 <input type="radio" name="template" value="0" checked>
                 <img src="preview/template0.png" alt="Template0">
             </label>
             <br>
             <label class="preview">
-                <input type="radio" name="template" value="1">
-                <img src="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196" alt="Template1">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
             </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
+            <label class="preview">
+                <input type="radio" name="template" value="0">
+                <img src="preview/template0.png" alt="Template0">
+            </label>
+            <br>
         </div>
 
         <div class="col-right"> <!-- LEFT COLUMN -->
 
             <div id="CV-title">
-                <h2>CV Generator</h2>
+                <h1>CV Generator</h1>
             </div>
 
             <section id="namesDiv">  <!-- Names -->
-                <h3>Names</h3>
+                <h3>Identity</h3>
                 <label for="fName">First name:<span>*</span></label>
-                <input id="fName" name="fName" type="text" class="" placeholder="First Name" required/>
+                <input id="fName" name="fName" type="text" class="" required>
                 <label for="lName">Last name:<span>*</span></label>
-                <input id="lName" name="lName" type="text" class="" placeholder="Last Name" required/>
+                <input id="lName" name="lName" type="text" class="" required>
                 <label for="status">Status:<span>*</span></label>
-                <input id="status" name="status" type="text" class="" placeholder="Title" required/>
+                <input id="status" name="status" type="text" class="" required>
+                <label for="address">Address:</label>
+                <input id="address" name="address" type="text" class=""/>
+
+                <input type="file" name="picture" accept="image/*" onchange="alert('truc')">
             </section>
             <hr>
             <section id="summaryDiv"> <!-- Summary -->
                 <h3>Summary</h3>
-                <label for="summary">Summary:</label>
-                <textarea id="summary" name="summary" placeholder="Summary"></textarea>
+                <label for="summary"></label>
+                <textarea id="summary" name="summary" placeholder="Simply tell things about you"></textarea>
             </section>
             <hr>
             <section id="skillDiv"> <!-- Skills -->
@@ -70,10 +99,18 @@
             </section>
             <hr>
             <section id="educationDiv"> <!-- Education -->
-                <h3>Education/diploma</h3>
+                <h3>Education</h3>
                 <script>addNewEducation()</script>
                 <button id="addEducationButton" type="button" onclick="addNewEducation()">Add Education</button>
                 <button id="deleteEducationButton" type="button" onclick="deleteLastEducation()" disabled>Delete Last
+                </button>
+            </section>
+            <hr>
+            <section id="experienceDiv"> <!-- Experience -->
+                <h3>Experience</h3>
+                <script>addNewExperience()</script>
+                <button id="addExperienceButton" type="button" onclick="addNewExperience()">Add Experience</button>
+                <button id="deleteExperienceButton" type="button" onclick="deleteLastExperience()" disabled>Delete Last
                 </button>
             </section>
             <hr>

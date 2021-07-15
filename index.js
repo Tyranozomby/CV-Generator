@@ -1,13 +1,15 @@
 let numberOfSkill = 0;
 let numberOfProject = 0;
 let numberOfEducation = 0;
+let numberOfExperience = 0;
 let numberOfLanguage = 0;
 let numberOfInterest = 0;
 let numberOfMore = 0;
 
 const maxSkill = 8;
 const maxProject = 10;
-const maxEducation = 6;
+const maxEducation = 5;
+const maxExperience = 5;
 const maxLanguage = 4;
 const maxInterest = 5;
 const maxMore = 5;
@@ -17,22 +19,27 @@ const maxMore = 5;
 function addNewSkill() {
     const section = document.createElement('section');
     section.id = "skill" + numberOfSkill;
+    section.innerHTML = "" +
+        "<div class='container skill'>" +
+        "   <label for='starSkill" + numberOfSkill + "'></label>" +
+        "   <input class='starSkill' id='starSkill" + numberOfSkill + "' name='starSkill" + numberOfSkill + "' type='text' placeholder='Name'>" +
+        "   <div class='rating' id='rating" + numberOfSkill + "'>" +
+        "       <i class='fa fa-star' value='1' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "       <i class='fa fa-star' value='2' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "       <i class='fa fa-star' value='3' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "       <i class='fa fa-star' value='4' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "       <i class='fa fa-star' value='5' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "       <span id='starText" + numberOfSkill + "'>None</span>" +
+        "   </div>" +
+        "   <label for='starValue" + numberOfSkill + "'></label>" +
+        "   <input id='starValue" + numberOfSkill + "' name='starValue" + numberOfSkill + "' type='text' value='0' hidden>" +
+        "</div>";
+
     const div = document.getElementById("skillDiv");
-    section.innerHTML = "<label for=\"starSkill" + numberOfSkill + "\">Skill:</label>\n" +
-        "                <input id=\"starSkill" + numberOfSkill + "\" name=\"starSkill" + numberOfSkill + "\" type=\"text\">\n" +
-        "                <div class=\"rating\" id=\"rating" + numberOfSkill + "\">\n" +
-        "                    <i class=\"fa fa-star\" aria-hidden=\"true\" value=\"1\" onclick=\"clickStar(this)\"></i>\n" +
-        "                    <i class=\"fa fa-star\" aria-hidden=\"true\" value=\"2\" onclick=\"clickStar(this)\"></i>\n" +
-        "                    <i class=\"fa fa-star\" aria-hidden=\"true\" value=\"3\" onclick=\"clickStar(this)\"></i>\n" +
-        "                    <i class=\"fa fa-star\" aria-hidden=\"true\" value=\"4\" onclick=\"clickStar(this)\"></i>\n" +
-        "                    <i class=\"fa fa-star\" aria-hidden=\"true\" value=\"5\" onclick=\"clickStar(this)\"></i>\n" +
-        "                    <span id=\"starText" + numberOfSkill + "\">None</span>\n" +
-        "                </div>\n" +
-        "                <label for=\"starValue" + numberOfSkill + "\"></label>\n" +
-        "                <input id=\"starValue" + numberOfSkill + "\" name=\"starValue" + numberOfSkill + "\" type=\"text\" value=\"0\" hidden>";
     div.insertBefore(section, document.getElementById("addSkillButton"));
+
     numberOfSkill++;
-    if (numberOfSkill === 2) {
+    if (numberOfSkill > 1) {
         document.getElementById("deleteSkillButton").disabled = false;
     }
     if (numberOfSkill === maxSkill) {
@@ -43,15 +50,17 @@ function addNewSkill() {
 function addNewProject() {
     const section = document.createElement('section');
     section.id = "project" + numberOfProject;
+    section.innerHTML = "<label for='project" + numberOfProject + "'>Project name:</label>" +
+        "                <input id='project" + numberOfProject + "' name='project" + numberOfProject + "' type='text' >" +
+        "                <br>" +
+        "                <label for='projectText" + numberOfProject + "'>Project infos:</label>" +
+        "                <textarea id='projectText" + numberOfProject + "' name='projectText" + numberOfProject + "' ></textarea>";
+
     const div = document.getElementById("projectDiv");
-    section.innerHTML = "<label for=\"project" + numberOfProject + "\">Project name:</label>\n" +
-        "                <input id=\"project" + numberOfProject + "\" name=\"project" + numberOfProject + "\" type=\"text\" placeholder=\"Project Name\" >\n" +
-        "                <br>\n" +
-        "                <label for=\"projectText" + numberOfProject + "\">Project infos:</label>\n" +
-        "                <textarea id=\"projectText" + numberOfProject + "\" name=\"projectText" + numberOfProject + "\" placeholder=\"Project Infos\" ></textarea>";
     div.insertBefore(section, document.getElementById("addProjectButton"));
+
     numberOfProject++;
-    if (numberOfProject === 2) {
+    if (numberOfProject > 1) {
         document.getElementById("deleteProjectButton").disabled = false;
     }
     if (numberOfProject === maxProject) {
@@ -60,17 +69,27 @@ function addNewProject() {
 }
 
 function addNewEducation() {
+    let date = new Date();
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
     const section = document.createElement('section');
     section.id = "education" + numberOfEducation;
+    section.innerHTML = "<label for='educationSchool" + numberOfEducation + "'>School:</label>" +
+        "                <input id='educationSchool" + numberOfEducation + "' name='educationSchool" + numberOfEducation + "' type='text'>" +
+        "                <label for='educationDiploma" + numberOfEducation + "'>Diploma:</label>" +
+        "                <input id='educationDiploma" + numberOfEducation + "' name='educationDiploma" + numberOfEducation + "' type='text'>" +
+        "                <label for='educationStart" + numberOfEducation + "'>Start:</label>" +
+        "                <input id='educationStart" + numberOfEducation + "' name='educationStart" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
+        "                <label for='educationEnd" + numberOfEducation + "'>End:</label>" +
+        "                <input id='educationEnd" + numberOfEducation + "' name='educationEnd" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
+        "                <label for='educationText" + numberOfEducation + "'>Description:</label>" +
+        "                <textarea id='educationText" + numberOfEducation + "' name='educationText" + numberOfEducation + "' ></textarea>";
+
     const div = document.getElementById("educationDiv");
-    section.innerHTML = "<label for=\"education" + numberOfEducation + "\">Education/diploma:</label>\n" +
-        "                <input id=\"education" + numberOfEducation + "\" name=\"education" + numberOfEducation + "\" type=\"text\" placeholder=\"Education Name\" >\n" +
-        "                <br>\n" +
-        "                <label for=\"educationText" + numberOfEducation + "\">Education Infos:</label>\n" +
-        "                <textarea id=\"educationText" + numberOfEducation + "\" name=\"educationText" + numberOfEducation + "\" placeholder=\"Education Infos\" ></textarea>";
     div.insertBefore(section, document.getElementById("addEducationButton"));
+
     numberOfEducation++;
-    if (numberOfEducation === 2) {
+    if (numberOfEducation > 1) {
         document.getElementById("deleteEducationButton").disabled = false;
     }
     if (numberOfEducation === maxEducation) {
@@ -78,18 +97,49 @@ function addNewEducation() {
     }
 }
 
+function addNewExperience() {
+    let date = new Date();
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let year = date.getFullYear();
+    const section = document.createElement('section');
+    section.id = "experience" + numberOfExperience;
+    section.innerHTML = "<label for='experienceCompany" + numberOfExperience + "'>Company:</label>" +
+        "                <input id='experienceCompany" + numberOfExperience + "' name='experienceCompany" + numberOfExperience + "' type='text'>" +
+        "                <label for='experiencePosition" + numberOfExperience + "'>Position:</label>" +
+        "                <input id='experiencePosition" + numberOfExperience + "' name='experiencePosition" + numberOfExperience + "' type='text'>" +
+        "                <label for='experienceStart" + numberOfExperience + "'>Start:</label>" +
+        "                <input id='experienceStart" + numberOfExperience + "' name='experienceStart" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
+        "                <label for='experienceEnd" + numberOfExperience + "'>End:</label>" +
+        "                <input id='experienceEnd" + numberOfExperience + "' name='experienceEnd" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
+        "                <label for='experienceText" + numberOfExperience + "'>Description:</label>" +
+        "                <textarea id='experienceText" + numberOfExperience + "' name='experienceText" + numberOfExperience + "' ></textarea>";
+
+    const div = document.getElementById("experienceDiv");
+    div.insertBefore(section, document.getElementById("addExperienceButton"));
+
+    numberOfExperience++;
+    if (numberOfExperience > 1) {
+        document.getElementById("deleteExperienceButton").disabled = false;
+    }
+    if (numberOfExperience === maxExperience) {
+        document.getElementById("addExperienceButton").disabled = true;
+    }
+}
+
 function addNewLanguage() {
     const section = document.createElement('section');
     section.id = "language" + numberOfLanguage;
+    section.innerHTML = "<label for='language" + numberOfLanguage + "'>Language:</label>" +
+        "                <input id='language" + numberOfLanguage + "' name='language" + numberOfLanguage + "' type='text' >" +
+        "                <br>" +
+        "                <label for='languageText" + numberOfLanguage + "'>Level:</label>" +
+        "                <input id='languageText" + numberOfLanguage + "' name='languageText" + numberOfLanguage + "' type='text' >";
+
     const div = document.getElementById("languageDiv");
-    section.innerHTML = "<label for=\"language" + numberOfLanguage + "\">Language:</label>\n" +
-        "                <input id=\"language" + numberOfLanguage + "\" name=\"language" + numberOfLanguage + "\" type=\"text\" placeholder=\"Name\">\n" +
-        "                <br>\n" +
-        "                <label for=\"languageText" + numberOfLanguage + "\">Level:</label>\n" +
-        "                <input id=\"languageText" + numberOfLanguage + "\" name=\"languageText" + numberOfLanguage + "\" type=\"text\" placeholder=\"Proficiency\">";
     div.insertBefore(section, document.getElementById("addLanguageButton"));
+
     numberOfLanguage++;
-    if (numberOfLanguage === 2) {
+    if (numberOfLanguage > 1) {
         document.getElementById("deleteLanguageButton").disabled = false;
     }
     if (numberOfLanguage === maxLanguage) {
@@ -100,15 +150,17 @@ function addNewLanguage() {
 function addNewInterest() {
     const section = document.createElement('section');
     section.id = "interest" + numberOfInterest;
+    section.innerHTML = "<label for='interestCategory" + numberOfInterest + "'>Interest Category:</label>" +
+        "                <input type='text' id='interestCategory" + numberOfInterest + "' name='interestCategory" + numberOfInterest + "' >" +
+        "                <br>" +
+        "                <label for='interestList" + numberOfInterest + "'>Interests:</label>" +
+        "                <textarea type='text' id='interestList" + numberOfInterest + "' name='interestList" + numberOfInterest + "' placeholder='One per line'></textarea>";
+
     const div = document.getElementById("interestDiv");
-    section.innerHTML = "<label for=\"interestCategory" + numberOfInterest + "\">Interest Category:</label>\n" +
-        "                <input type=\"text\" id=\"interestCategory" + numberOfInterest + "\" name=\"interestCategory" + numberOfInterest + "\" placeholder=\"Interest Category\">\n" +
-        "                <br>\n" +
-        "                <label for=\"interestList" + numberOfInterest + "\">Interests:</label>\n" +
-        "                <textarea type=\"text\" id=\"interestList" + numberOfInterest + "\" name=\"interestList" + numberOfInterest + "\" placeholder='Interests (one per line)'></textarea>";
     div.insertBefore(section, document.getElementById("addInterestButton"));
+
     numberOfInterest++;
-    if (numberOfInterest === 2) {
+    if (numberOfInterest > 1) {
         document.getElementById("deleteInterestButton").disabled = false;
     }
     if (numberOfInterest === maxInterest) {
@@ -119,16 +171,24 @@ function addNewInterest() {
 function addNewMore() {
     const section = document.createElement("section");
     section.id = "more" + numberOfMore;
+    section.innerHTML = "<label for='moreCategory" + numberOfMore + "'>Category:</label>" +
+        "                <input type='text' id='moreCategory" + numberOfMore + "' name='moreCategory" + numberOfMore + "'>" +
+        "                <label for='moreTitle" + numberOfMore + "'>Title:</label>" +
+        "                <input type='text' id='moreTitle" + numberOfMore + "' name='moreTitle" + numberOfMore + "'>" +
+        "                <label for='moreSubtitle" + numberOfMore + "'>Subtitle:</label>" +
+        "                <input type='text' id='moreSubtitle" + numberOfMore + "' name='moreSubtitle" + numberOfMore + "'>" +
+        "                <label for='moreStart" + numberOfMore + "'>Start:</label>" +
+        "                <input id='moreStart" + numberOfMore + "' name='moreStart" + numberOfMore + "' type='month'>" +
+        "                <label for='moreEnd" + numberOfMore + "'>End:</label>" +
+        "                <input id='moreEnd" + numberOfMore + "' name='moreEnd" + numberOfMore + "' type='month'>" +
+        "                <label for='moreInfo" + numberOfMore + "'>Information:</label>" +
+        "                <textarea type='text' id='moreInfo" + numberOfMore + "' name='moreInfo" + numberOfMore + "'></textarea>";
+
     const div = document.getElementById("moreDiv");
-    section.innerHTML = "<label for=\"moreTitle" + numberOfMore + "\">Title:</label>\n" +
-        "                <input type=\"text\" id=\"moreTitle" + numberOfMore + "\" name=\"moreTitle" + numberOfMore + "\" placeholder=\"Title\">\n" +
-        "                <label for=\"moreSubtitle" + numberOfMore + "\">Subtitle:</label>\n" +
-        "                <input type=\"text\" id=\"moreSubtitle" + numberOfMore + "\" name=\"moreSubtitle" + numberOfMore + "\" placeholder=\"Subtitle\">\n" +
-        "                <label for=\"moreInfo" + numberOfMore + "\">Information:</label>\n" +
-        "                <textarea type=\"text\" id=\"moreInfo" + numberOfMore + "\" name=\"moreInfo" + numberOfMore + "\" placeholder=\"Infos\"></textarea>";
     div.insertBefore(section, document.getElementById("addMoreButton"));
+
     numberOfMore++;
-    if (numberOfMore === 2) {
+    if (numberOfMore > 1) {
         document.getElementById("deleteMoreButton").disabled = false;
     }
     if (numberOfMore === maxMore) {
@@ -183,6 +243,21 @@ function deleteLastEducation() {
     }
 }
 
+function deleteLastExperience() {
+    if (numberOfExperience > 1) {
+        const last = document.getElementById("experience" + (numberOfExperience - 1));
+        const div = document.getElementById("experienceDiv");
+        div.removeChild(last);
+        numberOfExperience--;
+    }
+    if (numberOfExperience === 1) {
+        document.getElementById("deleteExperienceButton").disabled = true;
+    }
+    if (numberOfExperience === maxExperience - 1) {
+        document.getElementById("addExperienceButton").disabled = false;
+    }
+}
+
 function deleteLastLanguage() {
     if (numberOfLanguage > 1) {
         const last = document.getElementById("language" + (numberOfLanguage - 1));
@@ -220,7 +295,7 @@ function deleteLastMore() {
         div.removeChild(last);
         numberOfMore--;
     }
-    if (numberOfMore=== 1) {
+    if (numberOfMore === 1) {
         document.getElementById("deleteMoreButton").disabled = true;
     }
     if (numberOfMore === maxMore - 1) {
@@ -229,13 +304,13 @@ function deleteLastMore() {
 }
 
 
-function clickStar(ele) {
-    const parent = ele.parentElement;
+function clickStar(star) {
+    const parent = star.parentElement;
     const skillNumber = parent.id.split("rating")[1];
 
     const level = ["Beginner", "Novice", "Advanced", "Experienced", "Expert"];
     let ratingCount = 0;
-    const ratingValue = parseInt(ele.getAttribute("value"));
+    const ratingValue = parseInt(star.getAttribute("value"));
 
     for (let i = 0; i < ratingValue; i++) {
         parent.children[i].classList.add("clicked");
@@ -253,4 +328,25 @@ function clickStar(ele) {
     document.getElementById("starValue" + skillNumber).value = ratingCount;
     const temp = document.getElementById("starText" + skillNumber);
     temp.textContent = level[ratingCount - 1];
+}
+
+function hoverStar(star) {
+    const parent = star.parentElement;
+    const skillNumber = parent.id.split("rating")[1];
+    const clicked = parseInt(document.getElementById("starValue" + skillNumber).value);
+    const hovered = parseInt(star.getAttribute("value"));
+
+    for (let i = clicked; i < hovered; i++) {
+        parent.children[i].classList.add("hovered");
+    }
+}
+
+function leaveStar(star) {
+    const children = star.parentElement.children;
+
+    for (let i = 0; i < children.length - 1; i++) {
+        if (children[i].classList.contains("hovered")) {
+            children[i].classList.remove("hovered");
+        }
+    }
 }

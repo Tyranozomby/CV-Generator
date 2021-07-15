@@ -1,0 +1,11 @@
+Principal:
+
+- Adresse ✔
+- Éducation → école, diplôme, années, description ✔
+- Expérience → compagnie, poste, années, description ✔
+- Photo de profil
+
+CVs:
+
+- Télécharger → pdf, img, zip?
+- Imprimer
