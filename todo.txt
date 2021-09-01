@@ -3,7 +3,7 @@ Principal:
 - Adresse ✔
 - Éducation → école, diplôme, années, description ✔
 - Expérience → compagnie, poste, années, description ✔
-- Photo de profil
+- Photo de profil ✔ (Mais problème sur téléphone)
 
 CVs:
 

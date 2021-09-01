@@ -6,7 +6,11 @@
     <title>CV generator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="CSS/template0.css">
+
 </head>
+<header>
+
+</header>
 <body>
 <main id="resume" class="page">
     <header class="resume-header clearfix">
@@ -15,11 +19,12 @@
             <h2><?php echo "$status" ?></h2>
         </div>
         <div class="profile-pic pull-right">
-            <?php
-            if (file_exists($picture)) {
-                echo "<img src='$picture' alt ='profile-picture' >";
-            }
-            ?>
+            <img id="picture" alt="profile picture" src="">
+            <script>
+                const dataImage = sessionStorage.getItem('imgData');
+                const img = document.getElementById("picture");
+                img.src = "data:image/png;base64," + dataImage;
+            </script>
         </div>
     </header>
 
@@ -178,7 +183,7 @@
                 ?>
             </div>
 
-            <div class="container" <?php if ($educations == []) echo "hidden"; ?>>
+            <div class="container" <?php if ($experiences == []) echo "hidden"; ?>>
                 <h3>Experience</h3>
                 <div class="keyline"></div>
 

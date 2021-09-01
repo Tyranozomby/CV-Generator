@@ -17,26 +17,27 @@ const maxMore = 5;
 // ADD NEW
 
 function addNewSkill() {
-    const section = document.createElement('section');
-    section.id = "skill" + numberOfSkill;
-    section.innerHTML = "" +
-        "<div class='container skill'>" +
-        "   <label for='starSkill" + numberOfSkill + "'></label>" +
-        "   <input class='starSkill' id='starSkill" + numberOfSkill + "' name='starSkill" + numberOfSkill + "' type='text' placeholder='Name'>" +
-        "   <div class='rating' id='rating" + numberOfSkill + "'>" +
-        "       <i class='fa fa-star' value='1' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
-        "       <i class='fa fa-star' value='2' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
-        "       <i class='fa fa-star' value='3' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
-        "       <i class='fa fa-star' value='4' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
-        "       <i class='fa fa-star' value='5' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
-        "       <span id='starText" + numberOfSkill + "'>None</span>" +
-        "   </div>" +
-        "   <label for='starValue" + numberOfSkill + "'></label>" +
-        "   <input id='starValue" + numberOfSkill + "' name='starValue" + numberOfSkill + "' type='text' value='0' hidden>" +
-        "</div>";
+    const newSkill = document.createElement('div');
+    newSkill.id = "skill" + numberOfSkill;
+    newSkill.className = "m-3 form-group";
+    newSkill.innerHTML = "" +
+        "<div class='form-floating'>" +
+        "   <input class='form-control' id='skillName" + numberOfSkill + "' name='skillName" + numberOfSkill + "' type='text' placeholder=' '>" +
+        "   <label for='skillName" + numberOfSkill + "'>Name</label>" +
+        "</div>" +
+        "<div class='ms-2' id='rating" + numberOfSkill + "'>" +
+        "   <i class='fa fa-star' value='1' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "   <i class='fa fa-star' value='2' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "   <i class='fa fa-star' value='3' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "   <i class='fa fa-star' value='4' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "   <i class='fa fa-star' value='5' onclick='clickStar(this)' onmouseover='hoverStar(this)' onmouseleave='leaveStar(this)'></i>" +
+        "   <span class='ms-2' id='skillText" + numberOfSkill + "'>None</span>" +
+        "</div>" +
+        "<label for='skillValue" + numberOfSkill + "' hidden></label>" +
+        "<input id='skillValue" + numberOfSkill + "' name='skillValue" + numberOfSkill + "' type='text' value='0' hidden>";
 
-    const div = document.getElementById("skillDiv");
-    div.insertBefore(section, document.getElementById("addSkillButton"));
+    const div = document.getElementById("allSkills");
+    div.appendChild(newSkill);
 
     numberOfSkill++;
     if (numberOfSkill > 1) {
@@ -48,16 +49,21 @@ function addNewSkill() {
 }
 
 function addNewProject() {
-    const section = document.createElement('section');
-    section.id = "project" + numberOfProject;
-    section.innerHTML = "<label for='project" + numberOfProject + "'>Project name:</label>" +
-        "                <input id='project" + numberOfProject + "' name='project" + numberOfProject + "' type='text' >" +
-        "                <br>" +
-        "                <label for='projectText" + numberOfProject + "'>Project infos:</label>" +
-        "                <textarea id='projectText" + numberOfProject + "' name='projectText" + numberOfProject + "' ></textarea>";
+    const newProject = document.createElement('div');
+    newProject.id = "project" + numberOfProject;
+    newProject.className = "m-3 form-group";
+    newProject.innerHTML = "" +
+        "<div class='form-floating mb-1'>" +
+        "   <input class='form-control' id='projectName" + numberOfProject + "' name='projectName" + numberOfProject + "' type='text' placeholder=' '>" +
+        "   <label for='projectName" + numberOfProject + "'>Name</label>" +
+        "</div>" +
+        "<div>" +
+        "   <label for='projectText" + numberOfProject + "' hidden></label>" +
+        "   <textarea class='form-control' id='projectText" + numberOfProject + "' name='projectText" + numberOfProject + "' rows='6' placeholder='Project informations'></textarea>" +
+        "</div>";
 
-    const div = document.getElementById("projectDiv");
-    div.insertBefore(section, document.getElementById("addProjectButton"));
+    const div = document.getElementById("allProjects");
+    div.appendChild(newProject);
 
     numberOfProject++;
     if (numberOfProject > 1) {
@@ -72,21 +78,39 @@ function addNewEducation() {
     let date = new Date();
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
     let year = date.getFullYear();
-    const section = document.createElement('section');
-    section.id = "education" + numberOfEducation;
-    section.innerHTML = "<label for='educationSchool" + numberOfEducation + "'>School:</label>" +
-        "                <input id='educationSchool" + numberOfEducation + "' name='educationSchool" + numberOfEducation + "' type='text'>" +
-        "                <label for='educationDiploma" + numberOfEducation + "'>Diploma:</label>" +
-        "                <input id='educationDiploma" + numberOfEducation + "' name='educationDiploma" + numberOfEducation + "' type='text'>" +
-        "                <label for='educationStart" + numberOfEducation + "'>Start:</label>" +
-        "                <input id='educationStart" + numberOfEducation + "' name='educationStart" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
-        "                <label for='educationEnd" + numberOfEducation + "'>End:</label>" +
-        "                <input id='educationEnd" + numberOfEducation + "' name='educationEnd" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
-        "                <label for='educationText" + numberOfEducation + "'>Description:</label>" +
-        "                <textarea id='educationText" + numberOfEducation + "' name='educationText" + numberOfEducation + "' ></textarea>";
+    const newEducation = document.createElement('div');
+    newEducation.id = "education" + numberOfEducation;
+    newEducation.className = "m-3 form-group";
+    newEducation.innerHTML = "" +
+        "<div class='d-flex justify-content-center'>" +
+        "   <div class='pull-left me-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' id='educationSchool" + numberOfEducation + "' name='educationSchool" + numberOfEducation + "' placeholder=' ' type='text'>" +
+        "           <label for='educationSchool" + numberOfEducation + "'>School</label>" +
+        "       </div>" +
+        "   </div>" +
+        "   <div class='pull-right ms-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' id='educationDiploma" + numberOfEducation + "' name='educationDiploma" + numberOfEducation + "' placeholder=' ' type='text'>" +
+        "           <label for='educationDiploma" + numberOfEducation + "'>Diploma</label>" +
+        "       </div>" +
+        "   </div>" +
+        "</div>" +
+        "<div class='d-inline-block w-100'>" +
+        "   <div class='text-center pull-left w-48'>" +
+        "       <label class='form-text' for='educationStart" + numberOfEducation + "'>From</label>" +
+        "       <input class='form-control' id='educationStart" + numberOfEducation + "' name='educationStart" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
+        "   </div>" +
+        "   <div class='text-center pull-right w-48'>" +
+        "       <label class='form-text' for='educationEnd" + numberOfEducation + "'>To</label>" +
+        "       <input class='form-control' id='educationEnd" + numberOfEducation + "' name='educationEnd" + numberOfEducation + "' type='month' value='" + year + "-" + month + "'>" +
+        "   </div>" +
+        "</div>" +
+        "<label for='educationText" + numberOfEducation + "' hidden></label>" +
+        "<textarea class='form-control mt-1' id='educationText" + numberOfEducation + "' name='educationText" + numberOfEducation + "'  rows='7' placeholder='Description'></textarea>";
 
-    const div = document.getElementById("educationDiv");
-    div.insertBefore(section, document.getElementById("addEducationButton"));
+    const div = document.getElementById("allEducations");
+    div.appendChild(newEducation);
 
     numberOfEducation++;
     if (numberOfEducation > 1) {
@@ -101,21 +125,39 @@ function addNewExperience() {
     let date = new Date();
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
     let year = date.getFullYear();
-    const section = document.createElement('section');
-    section.id = "experience" + numberOfExperience;
-    section.innerHTML = "<label for='experienceCompany" + numberOfExperience + "'>Company:</label>" +
-        "                <input id='experienceCompany" + numberOfExperience + "' name='experienceCompany" + numberOfExperience + "' type='text'>" +
-        "                <label for='experiencePosition" + numberOfExperience + "'>Position:</label>" +
-        "                <input id='experiencePosition" + numberOfExperience + "' name='experiencePosition" + numberOfExperience + "' type='text'>" +
-        "                <label for='experienceStart" + numberOfExperience + "'>Start:</label>" +
-        "                <input id='experienceStart" + numberOfExperience + "' name='experienceStart" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
-        "                <label for='experienceEnd" + numberOfExperience + "'>End:</label>" +
-        "                <input id='experienceEnd" + numberOfExperience + "' name='experienceEnd" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
-        "                <label for='experienceText" + numberOfExperience + "'>Description:</label>" +
-        "                <textarea id='experienceText" + numberOfExperience + "' name='experienceText" + numberOfExperience + "' ></textarea>";
+    const newExperience = document.createElement('div');
+    newExperience.id = "experience" + numberOfExperience;
+    newExperience.className = "m-3 form-group";
+    newExperience.innerHTML = "" +
+        "<div class='d-flex justify-content-center'>" +
+        "   <div class='pull-left me-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' id='experienceCompany" + numberOfExperience + "' name='experienceCompany" + numberOfExperience + "' placeholder=' ' type='text'>" +
+        "           <label for='experienceCompany" + numberOfExperience + "'>Company</label>" +
+        "       </div>" +
+        "   </div>" +
+        "   <div class='pull-right ms-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' id='experiencePosition" + numberOfExperience + "' name='experiencePosition" + numberOfExperience + "' placeholder=' ' type='text'>" +
+        "           <label for='experiencePosition" + numberOfExperience + "'>Position</label>" +
+        "       </div>" +
+        "   </div>" +
+        "</div>" +
+        "<div class='d-inline-block w-100'>" +
+        "   <div class='text-center pull-left w-48'>" +
+        "       <label class='form-text' for='experienceStart" + numberOfExperience + "'>From</label>" +
+        "       <input class='form-control' id='experienceStart" + numberOfExperience + "' name='experienceStart" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
+        "   </div>" +
+        "   <div class='text-center pull-right w-48'>" +
+        "       <label class='form-text' for='experienceEnd" + numberOfExperience + "'>To</label>" +
+        "       <input class='form-control' id='experienceEnd" + numberOfExperience + "' name='experienceEnd" + numberOfExperience + "' type='month' value='" + year + "-" + month + "'>" +
+        "   </div>" +
+        "</div>" +
+        "<label for='experienceText" + numberOfExperience + "' hidden></label>" +
+        "<textarea class='form-control mt-1' id='experienceText" + numberOfExperience + "' name='experienceText" + numberOfExperience + "'  rows='7' placeholder='Description'></textarea>";
 
-    const div = document.getElementById("experienceDiv");
-    div.insertBefore(section, document.getElementById("addExperienceButton"));
+    const div = document.getElementById("allExperiences");
+    div.appendChild(newExperience);
 
     numberOfExperience++;
     if (numberOfExperience > 1) {
@@ -127,16 +169,21 @@ function addNewExperience() {
 }
 
 function addNewLanguage() {
-    const section = document.createElement('section');
-    section.id = "language" + numberOfLanguage;
-    section.innerHTML = "<label for='language" + numberOfLanguage + "'>Language:</label>" +
-        "                <input id='language" + numberOfLanguage + "' name='language" + numberOfLanguage + "' type='text' >" +
-        "                <br>" +
-        "                <label for='languageText" + numberOfLanguage + "'>Level:</label>" +
-        "                <input id='languageText" + numberOfLanguage + "' name='languageText" + numberOfLanguage + "' type='text' >";
+    const newLanguage = document.createElement('div');
+    newLanguage.id = "language" + numberOfLanguage;
+    newLanguage.className = "m-3 form-group";
+    newLanguage.innerHTML = "" +
+        "<div class='form-floating mb-1'>" +
+        "   <input class='form-control' id='languageName" + numberOfLanguage + "' name='languageName" + numberOfLanguage + "' type='text' placeholder=' '>" +
+        "   <label for='languageName" + numberOfLanguage + "'>Language</label>" +
+        "</div>" +
+        "<div class='form-floating'>" +
+        "   <input class='form-control' id='languageText" + numberOfLanguage + "' name='languageText" + numberOfLanguage + "' type='text' placeholder=' '>" +
+        "   <label for='languageText" + numberOfLanguage + "'>Proficiency</label>" +
+        "</div>";
 
-    const div = document.getElementById("languageDiv");
-    div.insertBefore(section, document.getElementById("addLanguageButton"));
+    const div = document.getElementById("allLanguages");
+    div.appendChild(newLanguage);
 
     numberOfLanguage++;
     if (numberOfLanguage > 1) {
@@ -148,16 +195,21 @@ function addNewLanguage() {
 }
 
 function addNewInterest() {
-    const section = document.createElement('section');
-    section.id = "interest" + numberOfInterest;
-    section.innerHTML = "<label for='interestCategory" + numberOfInterest + "'>Interest Category:</label>" +
-        "                <input type='text' id='interestCategory" + numberOfInterest + "' name='interestCategory" + numberOfInterest + "' >" +
-        "                <br>" +
-        "                <label for='interestList" + numberOfInterest + "'>Interests:</label>" +
-        "                <textarea type='text' id='interestList" + numberOfInterest + "' name='interestList" + numberOfInterest + "' placeholder='One per line'></textarea>";
+    const newInterest = document.createElement('div');
+    newInterest.id = "interest" + numberOfInterest;
+    newInterest.className = "m-3 form-group";
+    newInterest.innerHTML = "" +
+        "<div class='form-floating mb-1'>" +
+        "   <input class='form-control' type='text' id='interestCategory" + numberOfInterest + "' name='interestCategory" + numberOfInterest + "' placeholder=' '>" +
+        "   <label for='interestCategory" + numberOfInterest + "'>Category</label>" +
+        "</div>" +
+        "<div>" +
+        "   <label for='interestList" + numberOfInterest + "' hidden></label>" +
+        "   <textarea class='form-control' type='text' id='interestList" + numberOfInterest + "' name='interestList" + numberOfInterest + "' rows='7' placeholder='One interest per line'></textarea>" +
+        "</div>";
 
-    const div = document.getElementById("interestDiv");
-    div.insertBefore(section, document.getElementById("addInterestButton"));
+    const div = document.getElementById("allInterests");
+    div.appendChild(newInterest);
 
     numberOfInterest++;
     if (numberOfInterest > 1) {
@@ -169,23 +221,43 @@ function addNewInterest() {
 }
 
 function addNewMore() {
-    const section = document.createElement("section");
-    section.id = "more" + numberOfMore;
-    section.innerHTML = "<label for='moreCategory" + numberOfMore + "'>Category:</label>" +
-        "                <input type='text' id='moreCategory" + numberOfMore + "' name='moreCategory" + numberOfMore + "'>" +
-        "                <label for='moreTitle" + numberOfMore + "'>Title:</label>" +
-        "                <input type='text' id='moreTitle" + numberOfMore + "' name='moreTitle" + numberOfMore + "'>" +
-        "                <label for='moreSubtitle" + numberOfMore + "'>Subtitle:</label>" +
-        "                <input type='text' id='moreSubtitle" + numberOfMore + "' name='moreSubtitle" + numberOfMore + "'>" +
-        "                <label for='moreStart" + numberOfMore + "'>Start:</label>" +
-        "                <input id='moreStart" + numberOfMore + "' name='moreStart" + numberOfMore + "' type='month'>" +
-        "                <label for='moreEnd" + numberOfMore + "'>End:</label>" +
-        "                <input id='moreEnd" + numberOfMore + "' name='moreEnd" + numberOfMore + "' type='month'>" +
-        "                <label for='moreInfo" + numberOfMore + "'>Information:</label>" +
-        "                <textarea type='text' id='moreInfo" + numberOfMore + "' name='moreInfo" + numberOfMore + "'></textarea>";
+    const newMore = document.createElement("div");
+    newMore.id = "more" + numberOfMore;
+    newMore.className = "m-3 form-group";
+    newMore.innerHTML = "" +
+        "<div class='form-floating mb-2'>" +
+        "   <input class='form-control' type='text' id='moreCategory" + numberOfMore + "' name='moreCategory" + numberOfMore + "' placeholder=' '>" +
+        "   <label for='moreCategory" + numberOfMore + "'>Category</label>" +
+        "</div>" +
+        "<div class='d-flex justify-content-center'>" +
+        "   <div class='pull-left me-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' type='text' id='moreTitle" + numberOfMore + "' name='moreTitle" + numberOfMore + "' placeholder=' '>" +
+        "           <label for='moreTitle" + numberOfMore + "'>Title</label>" +
+        "       </div>" +
+        "   </div>" +
+        "   <div class='pull-right ms-3'>" +
+        "       <div class='form-floating'>" +
+        "           <input class='form-control' type='text' id='moreSubtitle" + numberOfMore + "' name='moreSubtitle" + numberOfMore + "' placeholder=' '>" +
+        "           <label for='moreSubtitle" + numberOfMore + "'>Subtitle</label>" +
+        "       </div>" +
+        "   </div>" +
+        "</div>" +
+        "<div class='d-inline-block w-100'>" +
+        "   <div class='text-center pull-left w-48'>" +
+        "       <label class='form-text' for='moreStart" + numberOfMore + "'>From</label>" +
+        "       <input class='form-control' id='moreStart" + numberOfMore + "' name='moreStart" + numberOfMore + "' type='month'>" +
+        "   </div>" +
+        "   <div class='text-center pull-right w-48'>" +
+        "       <label class='form-text' for='moreEnd" + numberOfMore + "'>To</label>" +
+        "       <input class='form-control' id='moreEnd" + numberOfMore + "' name='moreEnd" + numberOfMore + "' type='month'>" +
+        "   </div>" +
+        "</div>" +
+        "<label for='moreInfo" + numberOfMore + "' hidden></label>" +
+        "<textarea class='form-control mt-1' type='text' id='moreInfo" + numberOfMore + "' name='moreInfo" + numberOfMore + "' rows='7' placeholder='Information'></textarea>";
 
-    const div = document.getElementById("moreDiv");
-    div.insertBefore(section, document.getElementById("addMoreButton"));
+    const div = document.getElementById("allMore");
+    div.appendChild(newMore);
 
     numberOfMore++;
     if (numberOfMore > 1) {
@@ -201,7 +273,7 @@ function addNewMore() {
 function deleteLastSkill() {
     if (numberOfSkill > 1) {
         const last = document.getElementById("skill" + (numberOfSkill - 1));
-        const div = document.getElementById("skillDiv");
+        const div = document.getElementById("allSkills");
         div.removeChild(last);
         numberOfSkill--;
     }
@@ -216,7 +288,7 @@ function deleteLastSkill() {
 function deleteLastProject() {
     if (numberOfProject > 1) {
         const last = document.getElementById("project" + (numberOfProject - 1));
-        const div = document.getElementById("projectDiv");
+        const div = document.getElementById("allProjects");
         div.removeChild(last);
         numberOfProject--;
     }
@@ -231,7 +303,7 @@ function deleteLastProject() {
 function deleteLastEducation() {
     if (numberOfEducation > 1) {
         const last = document.getElementById("education" + (numberOfEducation - 1));
-        const div = document.getElementById("educationDiv");
+        const div = document.getElementById("allEducations");
         div.removeChild(last);
         numberOfEducation--;
     }
@@ -246,7 +318,7 @@ function deleteLastEducation() {
 function deleteLastExperience() {
     if (numberOfExperience > 1) {
         const last = document.getElementById("experience" + (numberOfExperience - 1));
-        const div = document.getElementById("experienceDiv");
+        const div = document.getElementById("allExperiences");
         div.removeChild(last);
         numberOfExperience--;
     }
@@ -261,7 +333,7 @@ function deleteLastExperience() {
 function deleteLastLanguage() {
     if (numberOfLanguage > 1) {
         const last = document.getElementById("language" + (numberOfLanguage - 1));
-        const div = document.getElementById("languageDiv");
+        const div = document.getElementById("allLanguages");
         div.removeChild(last);
         numberOfLanguage--;
     }
@@ -276,7 +348,7 @@ function deleteLastLanguage() {
 function deleteLastInterest() {
     if (numberOfInterest > 1) {
         const last = document.getElementById("interest" + (numberOfInterest - 1));
-        const div = document.getElementById("interestDiv");
+        const div = document.getElementById("allInterests");
         div.removeChild(last);
         numberOfInterest--;
     }
@@ -291,7 +363,7 @@ function deleteLastInterest() {
 function deleteLastMore() {
     if (numberOfMore > 1) {
         const last = document.getElementById("more" + (numberOfMore - 1));
-        const div = document.getElementById("moreDiv");
+        const div = document.getElementById("allMore");
         div.removeChild(last);
         numberOfMore--;
     }
@@ -303,6 +375,8 @@ function deleteLastMore() {
     }
 }
 
+
+// STAR RATING
 
 function clickStar(star) {
     const parent = star.parentElement;
@@ -325,15 +399,15 @@ function clickStar(star) {
             ratingCount++;
         }
     }
-    document.getElementById("starValue" + skillNumber).value = ratingCount;
-    const temp = document.getElementById("starText" + skillNumber);
+    document.getElementById("skillValue" + skillNumber).value = ratingCount;
+    const temp = document.getElementById("skillText" + skillNumber);
     temp.textContent = level[ratingCount - 1];
 }
 
 function hoverStar(star) {
     const parent = star.parentElement;
     const skillNumber = parent.id.split("rating")[1];
-    const clicked = parseInt(document.getElementById("starValue" + skillNumber).value);
+    const clicked = parseInt(document.getElementById("skillValue" + skillNumber).value);
     const hovered = parseInt(star.getAttribute("value"));
 
     for (let i = clicked; i < hovered; i++) {
@@ -349,4 +423,76 @@ function leaveStar(star) {
             children[i].classList.remove("hovered");
         }
     }
+}
+
+
+// PREVIEW
+
+function updatePreview(input) {
+    const [file] = input.files;
+
+    if (file) {
+        const extension = file.name.split('.').pop();
+        const supported = ["png", "jpeg", "jpg", "pjpeg", "pjp", "jfif"];
+        const maxSize = 10485760;
+        let valid = false;
+
+        for (let i = 0; i < supported.length; i++) {
+            if (extension === supported[i]) {
+                valid = true;
+            }
+        }
+
+        if (valid) {
+            if (file.size < maxSize) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            } else {
+                alert("This file is too big, more than 10Mb");
+            }
+        } else {
+            alert("This file extension is not supported (" + extension + ")");
+            document.getElementById('imagePreview').value = "";
+        }
+    } else {
+        document.getElementById('imagePreview').src = "images/no_pic.jpg";
+    }
+}
+
+// STORE PICTURE
+
+function savePicture() {
+    const bannerImage = document.getElementById('imagePreview');
+    const imgData = getBase64Image(bannerImage);
+    sessionStorage.setItem("imgData", imgData);
+}
+
+function getBase64Image(img) {
+    const canvas = document.createElement("canvas");
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    const dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+// EXECUTE STARTING FUNCTIONS
+
+function start() {
+    addNewSkill();
+    addNewProject();
+    addNewEducation();
+    addNewExperience();
+    addNewLanguage();
+    addNewInterest();
+    addNewMore();
+
+}
+
+// ALERT
+function close_alert(truc) {
+    truc.parentNode.remove();
 }

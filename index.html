@@ -3,162 +3,279 @@
 <meta charset="UTF-8">
 
 <head>
-    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
 
     <title>CV Generator</title>
 </head>
 
-<body>
-<form action="generate/" method="POST" target="_blank" enctype="multipart/form-data">
-    <div class="container">
-        <div class="col-left"> <!-- RIGHT COLUMN -->
-            <h2>Templates</h2>
-            <label class="preview">
-                <input type="radio" name="template" value="0" checked>
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-            <label class="preview">
-                <input type="radio" name="template" value="0">
-                <img src="preview/template0.png" alt="Template0">
-            </label>
-            <br>
-        </div>
+<body onload="start()">
+<form id="form" action="generate/" method="POST" target="_blank">
 
-        <div class="col-right"> <!-- LEFT COLUMN -->
-
-            <div id="CV-title">
-                <h1>CV Generator</h1>
-            </div>
-
-            <section id="namesDiv">  <!-- Names -->
-                <h3>Identity</h3>
-                <label for="fName">First name:<span>*</span></label>
-                <input id="fName" name="fName" type="text" class="" required>
-                <label for="lName">Last name:<span>*</span></label>
-                <input id="lName" name="lName" type="text" class="" required>
-                <label for="status">Status:<span>*</span></label>
-                <input id="status" name="status" type="text" class="" required>
-                <label for="address">Address:</label>
-                <input id="address" name="address" type="text" class=""/>
-
-                <input type="file" name="picture" accept="image/*" onchange="alert('truc')">
-            </section>
-            <hr>
-            <section id="summaryDiv"> <!-- Summary -->
-                <h3>Summary</h3>
-                <label for="summary"></label>
-                <textarea id="summary" name="summary" placeholder="Simply tell things about you"></textarea>
-            </section>
-            <hr>
-            <section id="skillDiv"> <!-- Skills -->
-                <h3>Skills</h3>
-                <script>addNewSkill()</script>
-                <button id="addSkillButton" type="button" onclick="addNewSkill()">Add Skill</button>
-                <button id="deleteSkillButton" type="button" onclick="deleteLastSkill()" disabled>Delete Last</button>
-            </section>
-            <hr>
-            <section id="projectDiv"> <!-- Projects -->
-                <h3>Projects</h3>
-                <script>addNewProject()</script>
-                <button id="addProjectButton" type="button" onclick="addNewProject()">Add Project</button>
-                <button id="deleteProjectButton" type="button" onclick="deleteLastProject()" disabled>Delete Last
-                </button>
-            </section>
-            <hr>
-            <section id="educationDiv"> <!-- Education -->
-                <h3>Education</h3>
-                <script>addNewEducation()</script>
-                <button id="addEducationButton" type="button" onclick="addNewEducation()">Add Education</button>
-                <button id="deleteEducationButton" type="button" onclick="deleteLastEducation()" disabled>Delete Last
-                </button>
-            </section>
-            <hr>
-            <section id="experienceDiv"> <!-- Experience -->
-                <h3>Experience</h3>
-                <script>addNewExperience()</script>
-                <button id="addExperienceButton" type="button" onclick="addNewExperience()">Add Experience</button>
-                <button id="deleteExperienceButton" type="button" onclick="deleteLastExperience()" disabled>Delete Last
-                </button>
-            </section>
-            <hr>
-            <section id="languageDiv"> <!-- Language -->
-                <h3>Languages</h3>
-                <script>addNewLanguage()</script>
-                <button id="addLanguageButton" type="button" onclick="addNewLanguage()">Add Language</button>
-                <button id="deleteLanguageButton" type="button" onclick="deleteLastLanguage()" disabled>Delete Last
-                </button>
-            </section>
-            <hr>
-            <section id="contactDiv"> <!-- Contact -->
-                <h3>Contacts</h3>
-                <label for="mail"><span class="fa fa-envelope-o"></span> Email</label>
-                <input type="text" id="mail" name="mail" placeholder="Address">
-                <label for="phone"><span class="fa fa-mobile"></span> Phone</label>
-                <input type="text" id="phone" name="phone" placeholder="Number">
-                <label for="website"><span class="fa fa-globe"></span> Website</label>
-                <input type="text" id="website" name="website" placeholder='URL (without "http:")'>
-                <br>
-                <label for="insta"><span class="fa fa-instagram"></span> Instagram</label>
-                <input type="text" id="insta" name="insta" placeholder="Pseudo">
-                <label for="github"><span class="fa fa-github"></span> GitHub</label>
-                <input type="text" id="github" name="github" placeholder="Pseudo">
-                <label for="linkedin"><span class="fa fa-linkedin-square"></span> Linkedin</label>
-                <input type="text" id="linkedin" name="linkedin" placeholder="Pseudo">
-            </section>
-            <hr>
-            <section id="interestDiv"> <!-- Interest -->
-                <h3>Interests</h3>
-                <script>addNewInterest()</script>
-                <button id="addInterestButton" type="button" onclick="addNewInterest()">Add Interest</button>
-                <button id="deleteInterestButton" type="button" onclick="deleteLastInterest()" disabled>Delete Last
-                </button>
-            </section>
-            <hr>
-            <section id="moreDiv">
-                <h3>More</h3>
-                <script>addNewMore()</script>
-                <button id="addMoreButton" type="button" onclick="addNewMore()">Add More</button>
-                <button id="deleteMoreButton" type="button" onclick="deleteLastMore()" disabled>Delete Last</button>
-            </section>
-            <hr>
-            <input id="submitButton" type="submit" value="Generate"> <!-- Input button -->
-        </div>
+    <div class="templates text-center" hidden> <!-- TEMPLATES -->
+        <h2 class="mt-2">Templates</h2>
+        <label class="preview">
+            <input type="radio" name="template" value="0" checked>
+            <img src="preview/template0.png" alt="Template0">
+        </label>
     </div>
 
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" onclick="close_alert(this)"></button>
+        <h2 class="alert-heading text-center">Warning!</h2>
+        <p class="mb-0">This website is currently in creation, it's normal if everything doesn't quite work or if it seems to be missing some functionalities.
+        To report a problem, please don't contact me cause nobody will see this message neither this website apart from <b>Belbaz</b></p>
+    </div>
 
+    <h1 class="text-center pt-2">CV Generator</h1>
+    <div class="d-flex justify-content-center"> <!-- FORM -->
+        <div class="main">
+
+            <section>  <!-- Identity -->
+                <h3>Identity</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 form-group me-2">
+                        <div class="form-floating">
+                            <input type="text" id="fName" name="fName" class="form-control" placeholder=" " required>
+                            <label for="fName">First name</label>
+                            <small class="form-text ms-1 required">Required</small>
+                        </div>
+                    </div>
+                    <div class="col-md-5 form-group">
+                        <div class="form-floating">
+                            <input id="lName" name="lName" type="text" class="form-control" placeholder=" " required>
+                            <label for="lName">Last name</label>
+                            <small class="form-text ms-1 required">Required</small>
+                        </div>
+                    </div>
+                    <div class="col-md-5 form-group me-2 mt-2">
+                        <div class="form-floating">
+                            <input id="status" name="status" type="text" class="form-control" placeholder=" ">
+                            <label for="status">Status</label>
+                            <small class="form-text ms-1">e.g. Student, Web Designer…</small>
+                        </div>
+                    </div>
+                    <div class="col-md-5 form-group mt-2">
+                        <div class="form-floating">
+                            <input id="address" name="address" type="text" class="form-control" placeholder=" "/>
+                            <label for="address">Address</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-2">
+                    <div class="m-3 form-group w-85"> <!-- Picture-->
+                        <label for="picture">Profile picture</label>
+                        <input type="file" class="form-control" id="picture" name="picture"
+                               accept="image/png, image/jpeg" onchange="updatePreview(this)">
+                        <div class="text-center">
+                            <img id="imagePreview" src="images/no_pic.jpg" alt="image preview" class="pt-2">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+            <section> <!-- Summary -->
+                <h3>Summary</h3>
+                <div class="main-group">
+                    <div class="form-group w-85">
+                        <label for="summary" hidden></label>
+                        <textarea id="summary" name="summary" class="form-control" rows="8"
+                                  placeholder="Simply tell things about you"></textarea>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+            <section> <!-- Skills -->
+                <h3>Skills</h3>
+                <div id="allSkills" class="main-group"></div>
+
+                <div class="text-center">
+                    <button id="addSkillButton" class="btn btn-primary me-2" type="button" onclick="addNewSkill()">
+                        Add Skill
+                    </button>
+                    <button id="deleteSkillButton" class="btn btn-primary" type="button" onclick="deleteLastSkill()"
+                            disabled>
+                        Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section> <!-- Projects -->
+                <h3>Projects</h3>
+                <div id="allProjects" class="main-group"></div>
+
+                <div class="text-center">
+                    <button id="addProjectButton" class="btn btn-primary me-2" type="button"
+                            onclick="addNewProject()">
+                        Add Project
+                    </button>
+                    <button id="deleteProjectButton" class="btn btn-primary" type="button"
+                            onclick="deleteLastProject()"
+                            disabled>
+                        Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section> <!-- Education -->
+                <h3>Education</h3>
+                <div id="allEducations" class="main-group"></div>
+
+                <div class="text-center">
+                    <button id="addEducationButton" type="button" class="btn btn-primary me-2"
+                            onclick="addNewEducation()">
+                        Add Education
+                    </button>
+                    <button id="deleteEducationButton" type="button" class="btn btn-primary"
+                            onclick="deleteLastEducation()"
+                            disabled>Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section> <!-- Experience -->
+                <h3>Experience</h3>
+                <div id="allExperiences" class="main-group"></div>
+
+                <div class="text-center">
+                    <button id="addExperienceButton" type="button" class="btn btn-primary me-2"
+                            onclick="addNewExperience()">Add Experience
+                    </button>
+                    <button id="deleteExperienceButton" type="button" class="btn btn-primary"
+                            onclick="deleteLastExperience()"
+                            disabled>Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section> <!-- Language -->
+                <h3>Languages</h3>
+                <div id="allLanguages" class="main-group"></div>
+
+                <div class="text-center">
+                    <button id="addLanguageButton" type="button" class="btn btn-primary me-2"
+                            onclick="addNewLanguage()">
+                        Add Language
+                    </button>
+                    <button id="deleteLanguageButton" type="button" class="btn btn-primary"
+                            onclick="deleteLastLanguage()"
+                            disabled>Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section> <!-- Contact -->
+                <h3>Contacts</h3>
+
+                <div class="main-group">
+                    <div class="m-3 w-80">
+                        <div class="main-group mb-3">
+                            <div class="form-group me-2 w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="mail" name="mail" placeholder=" ">
+                                    <label for="mail" class="d-inline-block"><span class="fa fa-envelope-o"></span>
+                                        Email</label>
+                                    <small class="form-text">Address</small>
+                                </div>
+                            </div>
+                            <div class="form-group me-2 w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="phone" name="phone" placeholder=" ">
+                                    <label for="phone" class="d-inline-block"><span class="fa fa-mobile"></span>
+                                        Phone</label>
+                                    <small class="form-text">Number</small>
+                                </div>
+                            </div>
+                            <div class="form-group w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="website" name="website"
+                                           placeholder=' '>
+                                    <label for="website" class="d-inline-block"><span class="fa fa-globe"></span>
+                                        Website</label>
+                                    <small class="form-text">URL (without https://)</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-group">
+                            <div class="form-group me-2 w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="insta" name="insta" placeholder=" ">
+                                    <label for="insta" class="d-inline-block"><span class="fa fa-instagram"></span>
+                                        Instagram</label>
+                                    <small class="form-text">Pseudo</small>
+                                </div>
+                            </div>
+                            <div class="form-group me-2 w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="github" name="github"
+                                           placeholder=" ">
+                                    <label for="github" class="d-inline-block"><span class="fa fa-github"></span>
+                                        GitHub</label>
+                                    <small class="form-text">Pseudo</small>
+                                </div>
+                            </div>
+                            <div class="form-group w-30">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="linkedin" name="linkedin"
+                                           placeholder=" ">
+                                    <label for="linkedin" class="d-inline-block"><span
+                                            class="fa fa-linkedin-square"></span> Linkedin</label>
+                                    <small class="form-text">Pseudo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <hr>
+            <section> <!-- Interest -->
+                <h3>Interests</h3>
+                <div id="allInterests" class="d-flex flex-wrap main-group"></div>
+
+                <div class="text-center">
+                    <button id="addInterestButton" type="button" class="btn btn-primary me-2"
+                            onclick="addNewInterest()">
+                        Add Interest
+                    </button>
+                    <button id="deleteInterestButton" type="button" class="btn btn-primary"
+                            onclick="deleteLastInterest()"
+                            disabled>Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <h3>More</h3>
+                <div id="allMore" class="d-flex flex-wrap main-group"></div>
+
+                <div class="text-center">
+                    <button id="addMoreButton" type="button" class="btn btn-primary me-2" onclick="addNewMore()">
+                        Add
+                        More
+                    </button>
+                    <button id="deleteMoreButton" type="button" class="btn btn-primary" onclick="deleteLastMore()"
+                            disabled>
+                        Delete Last
+                    </button>
+                </div>
+            </section>
+            <hr>
+
+            <div class="d-flex justify-content-center">
+                <button id="submitButton" type="submit" class="btn btn-success btn-lg me-3 w-50"
+                        onclick="savePicture()">Generate
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 </body>
+
 </html>
