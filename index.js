@@ -426,15 +426,15 @@ function leaveStar(star) {
 }
 
 
-// PREVIEW
+// SHOW PICTURE
 
-function updatePreview(input) {
-    const [file] = input.files;
+function showImage() {
+    const [file] = document.getElementById("picture-input").files;
 
     if (file) {
         const extension = file.name.split('.').pop();
         const supported = ["png", "jpeg", "jpg", "pjpeg", "pjp", "jfif"];
-        const maxSize = 10485760;
+        const maxSize = 1048576; // 1 Mb
         let valid = false;
 
         for (let i = 0; i < supported.length; i++) {
@@ -446,24 +446,36 @@ function updatePreview(input) {
         if (valid) {
             if (file.size < maxSize) {
                 document.getElementById('imagePreview').src = URL.createObjectURL(file);
+                document.getElementById("cancel-button").disabled = false;
             } else {
-                alert("This file is too big, more than 10Mb");
+                alert("This file is too big, more than 1Mb");
             }
         } else {
             alert("This file extension is not supported (" + extension + ")");
-            document.getElementById('imagePreview').value = "";
+            document.getElementById('imagePreview').src = "";
         }
     } else {
         document.getElementById('imagePreview').src = "images/no_pic.jpg";
     }
 }
 
+// REMOVE PICTURE
+
+function removeImage() {
+    document.getElementById('imagePreview').src = "images/no_pic.jpg";
+    document.getElementById("cancel-button").disabled = true;
+}
+
 // STORE PICTURE
 
 function savePicture() {
     const bannerImage = document.getElementById('imagePreview');
-    const imgData = getBase64Image(bannerImage);
-    sessionStorage.setItem("imgData", imgData);
+    if (!bannerImage.src.endsWith("images/no_pic.jpg")) {
+        const imgData = getBase64Image(bannerImage);
+        sessionStorage.setItem("imgData", imgData);
+    } else {
+        sessionStorage.removeItem("imgData")
+    }
 }
 
 function getBase64Image(img) {
@@ -489,10 +501,9 @@ function start() {
     addNewLanguage();
     addNewInterest();
     addNewMore();
-
 }
 
 // ALERT
-function close_alert(truc) {
-    truc.parentNode.remove();
+function close_alert() {
+    document.getElementById("close-button").parentNode.remove();
 }

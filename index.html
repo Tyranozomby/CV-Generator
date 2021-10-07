@@ -24,10 +24,9 @@
     </div>
 
     <div class="alert alert-dismissible alert-warning">
-        <button type="button" class="btn-close" onclick="close_alert(this)"></button>
+        <button type="button" id="close-button" class="btn-close" onclick="close_alert()"></button>
         <h2 class="alert-heading text-center">Warning!</h2>
-        <p class="mb-0">This website is currently in creation, it's normal if everything doesn't quite work or if it seems to be missing some functionalities.
-        To report a problem, please don't contact me cause nobody will see this message neither this website apart from <b>Belbaz</b></p>
+        <p class="mb-0 text-center">Ce site est en cours de création, soyez indulgents, merci.</p>
     </div>
 
     <h1 class="text-center pt-2">CV Generator</h1>
@@ -67,9 +66,15 @@
                 </div>
                 <div class="row justify-content-center mt-2">
                     <div class="m-3 form-group w-85"> <!-- Picture-->
-                        <label for="picture">Profile picture</label>
-                        <input type="file" class="form-control" id="picture" name="picture"
-                               accept="image/png, image/jpeg" onchange="updatePreview(this)">
+                        <label for="picture-input">Profile picture</label>
+                        <div class="d-flex">
+                            <input type="file" class="form-control w-80" id="picture-input" name="picture"
+                                   accept="image/png, image/jpeg" onchange="showImage()">
+                            <button type="button" id="cancel-button" class="btn btn-secondary ms-4 w-15" onclick="removeImage()"
+                                    disabled>
+                                Remove
+                            </button>
+                        </div>
                         <div class="text-center">
                             <img id="imagePreview" src="images/no_pic.jpg" alt="image preview" class="pt-2">
                         </div>

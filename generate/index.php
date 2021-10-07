@@ -3,7 +3,7 @@
 // En cas d'erreur (valeur non reconnue quelque part), renvoie sur la page principale.
 function myErrorHandler()
 {
-    header("location: ../");
+    header("Location: ../");
 }
 
 set_error_handler("myErrorHandler");

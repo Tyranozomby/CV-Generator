@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="CSS/template0.css">
 
 </head>
-<header>
-
-</header>
 <body>
 <main id="resume" class="page">
     <header class="resume-header clearfix">
@@ -22,8 +19,12 @@
             <img id="picture" alt="profile picture" src="">
             <script>
                 const dataImage = sessionStorage.getItem('imgData');
-                const img = document.getElementById("picture");
-                img.src = "data:image/png;base64," + dataImage;
+                if (dataImage) {
+                    const img = document.getElementById("picture");
+                    img.src = "data:image/png;base64," + dataImage;
+                } else {
+                    document.getElementById("picture").parentNode.remove();
+                }
             </script>
         </div>
     </header>
@@ -38,10 +39,10 @@
             <?php
             if ($address != "") {
                 echo '<div class="info-tag-container">';
-                echo '<i class="fa fa-map-marker"></i>';
-                echo '<h6 class="info-text">';
-                echo "$address";
-                echo '</h6>';
+                echo '    <i class="fa fa-map-marker"></i>';
+                echo '    <h6 class="info-text">';
+                echo "       $address";
+                echo '    </h6>';
                 echo '</div>';
             }
 
